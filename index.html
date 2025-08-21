@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Grimoire Street — Server Lore</title>
+
+  <style>
+    :root{
+      --bg:#36393f; --panel:#2f3136; --panel-elev:#40444b; --ink:#dcddde;
+      --ink-muted:#b9bbbe; --ink-dim:#8e9297; --line:#202225; --brand:#5865f2;
+      --chip:#4f545c; --highlight:#faa61a;
+      --sidebar-w:260px; --radius:8px; --space-2:8px; --space-3:12px; --space-4:16px; --space-5:20px;
+    }
+
+    *{box-sizing:border-box; margin:0; padding:0}
+    html,body{height:100%}
+    body{font-family:'Whitney','Segoe UI',system-ui,sans-serif; line-height:1.6; background:var(--bg); color:var(--ink)}
+
+    .app{display:flex; height:100vh; overflow:hidden}
+
+    /* Sidebar */
+    .sidebar{width:var(--sidebar-w); background:var(--panel); border-right:1px solid var(--line); display:flex; flex-direction:column}
+    .sidebar__head{padding:var(--space-4); border-bottom:1px solid var(--line); background:#202225}
+    .sidebar__title{font-weight:600; color:#fff; font-size:16px}
+    .sidebar__list{padding:var(--space-2); overflow:auto; scrollbar-gutter:stable}
+    .cat{display:flex; align-items:center; gap:var(--space-2); padding:10px var(--space-3); margin:2px 0; border-radius:6px; color:var(--ink-dim); cursor:pointer; user-select:none; outline:none}
+    .cat:hover{background:#34373c; color:var(--ink)}
+    .cat[aria-selected="true"]{background:var(--brand); color:#fff}
+    .cat__icon{font-size:18px}
+    .cat__count{margin-left:auto; background:var(--chip); color:#caccd0; font-size:12px; padding:2px 8px; border-radius:999px; font-weight:600}
+    .cat[aria-selected="true"] .cat__count{background:rgba(255,255,255,.22); color:#fff}
+
+    /* Main */
+    .main{flex:1; display:flex; flex-direction:column; min-width:0}
+    .main__bar{display:flex; align-items:center; justify-content:space-between; gap:var(--space-3); padding:var(--space-4) var(--space-5); border-bottom:1px solid var(--panel-elev); background:var(--bg); position:sticky; top:0; z-index:10}
+    .title{display:flex; align-items:center; gap:var(--space-2); font-size:20px; font-weight:600; color:#fff}
+    .search{width:100%; max-width:320px}
+    .search input{width:100%; padding:9px 12px; background:var(--panel-elev); border:1px solid var(--panel-elev); border-radius:6px; color:var(--ink); font-size:14px}
+    .search input::placeholder{color:#72767d}
+    .search input:focus{outline:none; border-color:#50545b; background:#484c52}
+
+    .scroll{flex:1; overflow:auto; padding:var(--space-5)}
+
+    .card{background:var(--panel); border:1px solid var(--panel-elev); border-radius:var(--radius); overflow:hidden; margin-bottom:var(--space-4)}
+    .card__head{background:var(--panel-elev); display:flex; align-items:center; justify-content:space-between; gap:var(--space-3); padding:12px 16px; border-bottom:1px solid var(--panel-elev)}
+    .card__title{font-size:18px; font-weight:600; color:#fff; min-width:0}
+    .badges{display:flex; gap:6px; flex-wrap:wrap}
+    /* Uniform badge style */
+    .badge{display:inline-flex; align-items:center; gap:6px; padding:4px 10px; font-size:12px; font-weight:600; border-radius:999px; text-transform:uppercase; letter-spacing:.02em; background:var(--chip); color:#fff; white-space:nowrap}
+
+    .card__body{padding:16px}
+    .desc{font-size:15px; color:var(--ink); margin-bottom:12px}
+    .note{background:var(--panel-elev); border-left:4px solid var(--brand); padding:12px 14px; border-radius:0 6px 6px 0; font-size:14px; color:var(--ink-muted); font-style:italic}
+
+    .empty{text-align:center; padding:64px 12px; color:#72767d; font-size:16px}
+    .hl{background:var(--highlight); color:#000; padding:0 3px; border-radius:3px; font-weight:600}
+
+    .cat:focus-visible, .search input:focus-visible{outline:2px solid #fff; outline-offset:2px}
+
+    .loading{text-align:center; padding:64px 12px; color:#72767d; font-size:16px}
+    .error{text-align:center; padding:64px 12px; color:#f04747; font-size:16px}
+
+    @media (max-width:780px){.sidebar{width:220px} .main__bar{padding:12px var(--space-4); gap:var(--space-3); flex-wrap:wrap} .title{font-size:18px} .scroll{padding:16px}}
+    @media (max-width:600px){.app{flex-direction:column} .sidebar{width:100%; border-right:none; border-bottom:1px solid var(--line)} .sidebar__list{display:flex; gap:6px; overflow:auto; padding:8px} .cat{margin:0}}
+
+    ::-webkit-scrollbar{width:8px; height:8px}
+    ::-webkit-scrollbar-track{background:var(--panel)}
+    ::-webkit-scrollbar-thumb{background:var(--line); border-radius:4px}
+    ::-webkit-scrollbar-thumb:hover{background:var(--panel-elev)}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="sidebar__head"><div class="sidebar__title">📚 Server Canons</div></div>
+      <nav class="sidebar__list" id="categories"></nav>
+    </aside>
+    <main class="main">
+      <header class="main__bar">
+        <h1 class="title" id="viewTitle"><span>📖</span><span>All Canon Entries</span></h1>
+        <label class="search"><input id="search" type="search" placeholder="Search canons..." /></label>
+      </header>
+      <section class="scroll" id="results"></section>
+    </main>
+  </div>
+
+  <script>
+    let loreData = [];
+    let activeCategory='all', searchTerm='';
+    const icons={all:'📚', Rules:'⚖️', Magic:'🪄', Location:'🏛️', General:'📜'};
+    const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+
+    const escapeHTML=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const highlight=(t,q)=>!q?escapeHTML(t):escapeHTML(t).replace(new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`,'gi'),'<span class="hl">$1</span>');
+
+    function computeCategories(){return ['all',...new Set(loreData.map(i=>i.type))]}
+    function filterData(){let d=loreData; if(activeCategory!=='all') d=d.filter(i=>i.type===activeCategory); if(searchTerm) d=d.filter(i=> i.location.toLowerCase().includes(searchTerm) || i.lore.toLowerCase().includes(searchTerm) || (i.notes||'').toLowerCase().includes(searchTerm) || i.creator.toLowerCase().includes(searchTerm) || i.type.toLowerCase().includes(searchTerm)); return d;}
+
+    function renderCategories(){const el=$('#categories'); el.innerHTML=computeCategories().map(c=>{const count=c==='all'?loreData.length:loreData.filter(i=>i.type===c).length; const icon=icons[c]||'📄'; return `<div class="cat" data-cat="${c}" aria-selected="${c===activeCategory}"><span class="cat__icon">${icon}</span><span>${c==='all'?'All Entries':c}</span><span class="cat__count">${count}</span></div>`}).join('')}
+    function renderTitle(){ $('#viewTitle').innerHTML = `<span>${icons[activeCategory]||'📖'}</span><span>${activeCategory==='all'?'All Canon Entries':activeCategory}</span>` }
+
+    function renderResults(){ const el=$('#results'); const items=filterData(); if(!items.length){ el.innerHTML='<div class="empty">No lore entries found.</div>'; return; } el.innerHTML = items.map(i=>`<article class="card"><header class="card__head"><h2 class="card__title">${highlight(i.location,searchTerm)}</h2><div class="badges"><span class="badge">${i.type}</span><span class="badge">${i.creator}</span></div></header><div class="card__body"><p class="desc">${highlight(i.lore,searchTerm)}</p>${i.notes?`<div class="note">${highlight(i.notes,searchTerm)}</div>`:''}</div></article>`).join('') }
+
+    function setActiveCategory(c){ activeCategory=c; $$('.cat').forEach(n=>n.setAttribute('aria-selected', n.dataset.cat===c)); renderTitle(); renderResults(); }
+
+    function showLoading() { $('#results').innerHTML='<div class="loading">Loading lore data...</div>'; }
+    function showError(err) { $('#results').innerHTML=`<div class="error">Error loading data: ${err}</div>`; }
+
+    async function loadLoreData() {
+      try {
+        showLoading();
+        const response = await fetch('./lore-data.json');
+        if (!response.ok) throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        loreData = await response.json();
+        renderCategories();
+        renderTitle();
+        renderResults();
+      } catch (error) {
+        console.error('Failed to load lore data:', error);
+        showError(error.message);
+      }
+    }
+
+    function initEvents(){ 
+      $('#categories').addEventListener('click', e=>{ const t=e.target.closest('.cat'); if(t) setActiveCategory(t.dataset.cat) }); 
+      $('#search').addEventListener('input', e=>{ searchTerm=e.target.value.toLowerCase(); renderResults(); }); 
+    }
+
+    function init(){ initEvents(); loadLoreData(); }
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
