@@ -15,10 +15,10 @@
   },
   {
     "type": "Magic",
-    "location": "Tombes",
+    "location": "Tomes",
     "creator": "SERVER LORE",
-    "lore": "Tombes are enchanted leather-bound folios that function as magical \"texting.\" Each Tome is keyed to its owner: all messages appear in their unique handwriting and ink color. In Group Tombes (\"Tomb Chats\"), entries display the writer's signature rune/crest, ensuring messages are always identifiable.",
-    "notes": "Common among Hogwarts students, pure-blood families, and secret societies. House Tombes exist for Gryffindor, Hufflepuff, Ravenclaw, and Slytherin, each reflecting the personality of its House culture. Messages cannot be erased, only ritually destroyed. Some heirloom Tombes preserve decades of correspondence. Rare risks include ghostly \"ink bleed\" from old messages."
+    "lore": "Tomes are enchanted leather-bound folios that function as magical \"texting.\" Each Tome is keyed to its owner: all messages appear in their unique handwriting and ink color. In Group Tomes (\"Tome Chats\"), entries display the writer's signature rune/crest, ensuring messages are always identifiable.",
+    "notes": "Common among Hogwarts students, pure-blood families, and secret societies. House Tomes exist for Gryffindor, Hufflepuff, Ravenclaw, and Slytherin, each reflecting the personality of its House culture. Messages cannot be erased, only ritually destroyed. Some heirloom Tomes preserve decades of correspondence. Rare risks include ghostly \"ink bleed\" from old messages."
   },
   {
     "type": "Magic",
