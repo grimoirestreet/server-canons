@@ -67,9 +67,12 @@
 </div>
 
 <script>
-const DATA_URL = 'lore-data.json'; // IMPORTANT: relative path in the same repo
+const DATA_URL = 'lore-data.json'; // root file (no leading slash)
 const EDIT_DATA_URL = 'https://github.com/grimoirestreet/server-canons/edit/main/lore-data.json';
 document.getElementById('editLink').href = EDIT_DATA_URL;
+
+// Debug: show the exact URL being fetched (helps if something 404s)
+console.log('Fetching', new URL(DATA_URL, location.href).href);
 
 const $ = s => document.querySelector(s);
 const listEl = $('#list');
@@ -96,7 +99,8 @@ function makeRow(entry){
   const left = document.createElement('div');
   const name = document.createElement('div'); name.className='name'; name.textContent = entry.location || '(Untitled)';
   const preview = document.createElement('div'); preview.style.cssText='color:#aab0ba;font-size:13px;margin-top:2px';
-  preview.textContent = (entry.lore || '').slice(0,140) + ((entry.lore||'').length>140?'…':'');
+  const text = (entry.lore || '').replace(/\s+/g,' ').trim();
+  preview.textContent = text.slice(0,140) + (text.length>140?'…':'');
   left.append(name, preview);
 
   const meta = document.createElement('div'); meta.className='meta';
@@ -136,10 +140,7 @@ $('#type').addEventListener('change', e=>{ state.type = e.target.value; render(s
     if(!res.ok) throw new Error('HTTP '+res.status);
     const data = await res.json();
 
-    // Accept either { "canons":[...] } or a raw array [...]
     CANONS = Array.isArray(data) ? data : (data.canons || []);
-
-    // Basic sanity check to help staff if JSON is malformed
     if(!Array.isArray(CANONS)) throw new Error('JSON shape must be an array or { "canons": [] }');
 
     render(state);
