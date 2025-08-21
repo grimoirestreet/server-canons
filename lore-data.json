@@ -1,0 +1,135 @@
+[
+  {
+    "type": "Rules",
+    "location": "Age of Adulthood",
+    "creator": "CANON",
+    "lore": "At 17 years old, witches and wizards in Wizarding Britain are legally considered adults. This law has been in place since 1875 under the Decree for the Reasonable Restriction of Underage Sorcery.",
+    "notes": "Unchanged from canon."
+  },
+  {
+    "type": "Rules",
+    "location": "Hogwarts Discipline",
+    "creator": "CANON / SERVER LORE",
+    "lore": "Prefects may remove points from their own House and assign detentions, but cannot punish other Prefects. Professors and Heads of House retain final authority.",
+    "notes": "OOC note: Punishments may be plotted collaboratively between players and staff."
+  },
+  {
+    "type": "Magic",
+    "location": "Tombes",
+    "creator": "SERVER LORE",
+    "lore": "Tombes are enchanted leather-bound folios that function as magical \"texting.\" Each Tome is keyed to its owner: all messages appear in their unique handwriting and ink color. In Group Tombes (\"Tomb Chats\"), entries display the writer's signature rune/crest, ensuring messages are always identifiable.",
+    "notes": "Common among Hogwarts students, pure-blood families, and secret societies. House Tombes exist for Gryffindor, Hufflepuff, Ravenclaw, and Slytherin, each reflecting the personality of its House culture. Messages cannot be erased, only ritually destroyed. Some heirloom Tombes preserve decades of correspondence. Rare risks include ghostly \"ink bleed\" from old messages."
+  },
+  {
+    "type": "Magic",
+    "location": "Black Mirrors",
+    "creator": "SERVER LORE",
+    "lore": "Black Mirrors, carved from dragon glass (obsidian), allow long-distance face-to-face communication. When activated, the mirror ripples like dark water, showing the caller in grayscale with faintly glowing eyes. Each user's name rune appears in the corner of the reflection to confirm identity. A recipient must physically touch their Mirror to accept the call.",
+    "notes": "Expensive and rare — most owned by wealthy families or the Ministry. Long calls are draining, international calls unstable. Paranormal rumors suggest some Mirrors echo with the voices of the dead. Some families embellish their Mirrors with ornate silver frames or crests."
+  },
+  {
+    "type": "Magic",
+    "location": "Spells & Charms",
+    "creator": "SERVER LORE",
+    "lore": "Many spells known in modern canon have not yet been invented. The Patronus Charm is experimental; Shield Charms are weaker; healing magic is more rudimentary.",
+    "notes": "Duelling in the 1890s is slower and more ritualized, with greater emphasis on etiquette and preparation."
+  },
+  {
+    "type": "Magic",
+    "location": "Dark Arts",
+    "creator": "CANON / SERVER LORE",
+    "lore": "The Ministry is increasingly strict about Dark Arts, though the term Unforgivable Curses is not yet in use. Forbidden magics circulate quietly among certain families and underground groups.",
+    "notes": "Possession of advanced curses or illegal grimoires may bring severe legal consequences."
+  },
+  {
+    "type": "General",
+    "location": "The Reform Act of 1889",
+    "creator": "SERVER LORE",
+    "lore": "The Magical Education Reform Act (1889) allowed all magical children, regardless of heritage, to attend Hogwarts without sponsorship. It also legitimized Grimoire Street as a proper wizarding business district where half-bloods and Muggleborns can legally own shops and property.",
+    "notes": "Pure-blood families opposed the law but were defeated in the Wizengamot. Resentment simmers, and suspicion falls on half-bloods and Muggleborns as mysterious deaths rise."
+  },
+  {
+    "type": "Location",
+    "location": "Grimoire Street",
+    "creator": "SERVER LORE",
+    "lore": "Once a lawless back-alley in London where outcasts survived, Grimoire Street was legitimized by the 1889 Reform Act. The effort was spearheaded by Cornelius Hemingway, a wealthy pure-blood co-owner of the Daily Prophet, who shocked his peers by investing heavily in the district after falling for a half-blood witch, Isolde Casselberry. He became one of the first landlords willing to rent and sell property to witches and wizards of any blood status, cementing Grimoire Street as the cultural and economic center of marginalized wizarding society.",
+    "notes": "Today, Grimoire Street thrives with eccentric shops, potion houses, boarding rooms, and underground dueling parlors. Pure-bloods sneer at it as a \"festering sore,\" but half-bloods and Muggleborns embrace it as freedom. Marcella Hemingway's bloodline ties her fate directly to the street's future."
+  },
+  {
+    "type": "General",
+    "location": "Pure-blood Panic",
+    "creator": "SERVER LORE",
+    "lore": "Since June 1890, a string of mysterious deaths has targeted young pure-bloods (all former Hogwarts Quidditch players). Victims are found peacefully dead in their sleep, lips faintly blue. No cause has been identified.",
+    "notes": "Rumors of revenge circulate. Fear and paranoia dominate pure-blood society. Students at Hogwarts segregate by blood status more fiercely than ever."
+  },
+  {
+    "type": "General",
+    "location": "Quidditch Restrictions",
+    "creator": "SERVER LORE",
+    "lore": "Headmaster Black has banned official Quidditch matches at Hogwarts due to \"safety concerns,\" citing the link between deaths and former players. However, students are still permitted to practice and train with their House teams, keeping the tradition alive without formal competition.",
+    "notes": "Practices often turn into competitive scrimmages, but without matches, tensions simmer dangerously. Many students are furious, treating the ban as a direct assault on Hogwarts tradition."
+  },
+  {
+    "type": "General",
+    "location": "The Scholar's Gauntlet",
+    "creator": "SERVER LORE",
+    "lore": "The Scholar's Gauntlet is a prestigious magical competition held at Hogwarts once every three years during the summer break. Each House puts forth a champion to face a sequence of dangerous trials testing intellect, endurance, magical ability, and cunning. Winning the Gauntlet is considered one of the greatest honors a student can achieve, with champions immortalized in Hogwarts' history.",
+    "notes": "Challenges often involve the Black Lake, the Forbidden Forest, and hidden castle chambers. While designed to be survivable, injuries are common and death is not impossible. The Gauntlet fuels House rivalries and serves as the centerpiece of wizarding summers."
+  },
+  {
+    "type": "General",
+    "location": "Hogwarts Curriculum",
+    "creator": "CANON / SERVER LORE",
+    "lore": "Curriculum reflects the era: History of Magic emphasizes medieval and Renaissance wizardry; Arithmancy and Alchemy are valued; Muggle Studies does not yet exist.",
+    "notes": "Astronomy and Ancient Runes are prestigious electives."
+  },
+  {
+    "type": "General",
+    "location": "Hogwarts Life",
+    "creator": "SERVER LORE",
+    "lore": "The school has a distinct Gothic-Victorian character. Gas lamps line halls; uniforms are formal (cloaks, corsets, waistcoats, high collars). Carriages are horse-drawn.",
+    "notes": "The castle feels stricter, darker, and bound by ritual compared to modern canon."
+  },
+  {
+    "type": "General",
+    "location": "Missing Students — Marcella Hemingway",
+    "creator": "SERVER LORE",
+    "lore": "Marcella Hemingway (Ravenclaw, 7th year) vanished early in the school term while investigating the pure-blood deaths. She was last seen at her desk mid-sentence, as if she had been snatched from existence.",
+    "notes": "Bloodline: Bastard daughter of Cornelius Hemingway (pure-blood Prophet co-owner) and Isolde Casselberry (half-blood witch tied to early Grimoire Street). Raised as a Hemingway but whispered about as a scandalous half-blood. Admired for her investigative brilliance, feared for her access to dangerous information."
+  },
+  {
+    "type": "General",
+    "location": "Current Atmosphere",
+    "creator": "SERVER LORE",
+    "lore": "By autumn 1890, Hogwarts is tense and fearful. Pure-bloods travel in packs; others live under suspicion. Professors sense society unraveling inside the school walls.",
+    "notes": "Many fear the deaths are only the beginning, and that paranoia will cause students to turn on one another."
+  },
+  {
+    "type": "Rules",
+    "location": "Student Curfew",
+    "creator": "CANON / SERVER LORE",
+    "lore": "All students must return to their dormitories by 10:00 PM each evening. This curfew applies universally across all years and Houses, with no exceptions save for supervised activities or express permission from faculty. Students found wandering the corridors after curfew face detention and House point deductions.",
+    "notes": "OOC note: Due to timezone differences among players, prefects and professors will not heavily enforce curfew unless breaking it is explicitly stated in roleplay. While sneaking around is permitted for story purposes, students caught will face appropriate IC consequences."
+  },
+  {
+    "type": "Rules",
+    "location": "Dormitory Regulations",
+    "creator": "CANON / SERVER LORE",
+    "lore": "Male students are strictly prohibited from entering female dormitories, with the staircases magically enchanted to prevent such access. Female students may technically enter male dormitories, though this practice is strongly discouraged and monitored by prefects. Each dormitory room houses exactly four students of the same year and gender, with four-poster beds, personal storage trunks, and shared common areas.",
+    "notes": "While the magical restrictions are absolute for male students, female students should exercise discretion and respect boundaries when visiting male dormitories."
+  },
+  {
+    "type": "Rules",
+    "location": "Approved Pets & Magical Creatures",
+    "creator": "SERVER LORE",
+    "lore": "The official standard permits students one cat, owl, or toad. However, many students acquire additional or alternative pets including ferrets, rats, dogs, frogs, fish, rabbits, pigs, hamsters, or exotic animals such as spiders, snakes, lizards, and turtles. Some students even keep magical plants as companions. Students may maintain no more than two pets simultaneously and must register each animal with the school. All pets require identification tags worn constantly or affixed to enclosures. Magical creatures rated X through XXX are permitted with proper registration.",
+    "notes": "Animals must remain in dormitory and common room areas unless supervised. Transportation requires proper cages or carriers during arrival, departure, and holidays. Unregistered pets result in disciplinary action. Discovery of XXXX-rated or higher magical creatures constitutes grounds for expulsion and potential legal consequences."
+  },
+  {
+    "type": "Rules",
+    "location": "Library Regulations",
+    "creator": "CANON / SERVER LORE",
+    "lore": "Standard conduct is expected at all times within the library. Books cannot be removed without proper checkout procedures at the front desk - magical wards prevent unauthorized removal and will trap violators within the library until staff intervention. Students may check out a maximum of three books simultaneously. The Restricted Section is protected by sophisticated age-line charms that prevent access based on student year and maturity.",
+    "notes": "Violations of library policy result in temporary or permanent bans depending on severity. The magical enforcement systems are both comprehensive and unforgiving."
+  }
+]
