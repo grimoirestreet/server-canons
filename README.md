@@ -1,75 +1,149 @@
-# Staff Instructions: Adding New Canon Entries
+# 🜂 Grimoire Street • Specialties Tracker
 
-## Quick Start
-1. Navigate to the `lore-data.json` file in your GitHub repository
-2. Click the pencil icon (✏️) to edit
-3. Add your new entry following the format below
-4. Commit your changes
+This tracker powers the **Specialties Availability (Students Only)** table and the **Student Roster** on your site.
+It automatically loads data from `tracker.json` in this repository and updates whenever you commit changes.
 
-## Adding a New Canon Entry
+> **Important:** The tracker **only tracks students** (Years 1–7 in a Hogwarts House).
+> **Adults are uncapped and not tracked**—they do not appear in counts or the roster.
 
-Find the end of the file (after the last `}` but before the closing `]`) and add a comma, then your new entry:
+---
 
-```json
-  ,
-  {
-    "type": "Rules",
-    "location": "Your Canon Title Here",
-    "creator": "SERVER LORE",
-    "lore": "The main description of your canon rule or lore. This should be detailed and clear.",
-    "notes": "Optional additional notes, OOC information, or clarifications."
-  }
+## 📂 Files in This Repo
+
+```
+specialities/
+ ├─ tracker.json   ← Main data file (edit this for student roster changes)
+ ├─ index.html     ← Tracker webpage (reads tracker.json automatically)
+ └─ README.md      ← This guide
 ```
 
-## Field Explanations
+---
 
-- **type**: Must be one of: `"Rules"`, `"Magic"`, `"Location"`, `"General"`
-- **location**: The title/name of this canon entry (what players will see as the heading)
-- **creator**: Usually `"SERVER LORE"`, `"CANON"`, or `"CANON / SERVER LORE"`
-- **lore**: The main description - this is the core information
-- **notes**: Optional field for additional context, OOC notes, etc. Can be left empty with `""`
+## 📝 Adding a New Student
 
-## Example Entry
+1. Open **`tracker.json`** in GitHub.
+2. Click the **pencil icon** (Edit).
+3. Scroll to the bottom (before the closing `]`).
+4. Copy the template below and paste it on a **new line**:
 
 ```json
-  ,
-  {
-    "type": "Rules",
-    "location": "Owl Post Regulations",
-    "creator": "SERVER LORE",
-    "lore": "All student mail must be sent through school owls during term time. Personal owls may only be used for emergency family communications with prior approval from a Head of House.",
-    "notes": "OOC note: Players should still feel free to have their characters receive letters for plot purposes - this rule exists for world-building consistency."
-  }
+{
+  "specialty": "Parselmouth",
+  "character": "Full Name Here",
+  "house": "Gryffindor",
+  "year": "1",
+  "player": "@DiscordName#0000",
+  "status": "Approved",
+  "app": "https://link.to/application",
+  "notes": "Optional notes here"
+}
 ```
 
-## Important Notes
+5. Update the fields:
 
-- **Always add a comma** after the previous entry before adding your new one
-- **Don't add a comma** after your new entry if it's the last one
-- **Check your JSON formatting** - missing quotes or brackets will break the site
-- **Test the site** after making changes to ensure it loads properly
-- **Use straight quotes** (`"`) not curly quotes (`"`)
+| Field     | Type   | Allowed Values                                                                                                | Notes                       |
+| --------- | ------ | ------------------------------------------------------------------------------------------------------------- | --------------------------- |
+| specialty | string | Parselmouth, Occlumens, Legilimens, Seer, Metamorphmagus, Blood Curse Bearer, Obscurial, Wandless Magic Adept | Must match exactly          |
+| character | string | Any full name                                                                                                 | Student’s full name         |
+| house     | string | Gryffindor, Hufflepuff, Ravenclaw, Slytherin                                                                  | Students must be in a House |
+| year      | string | `"1"`–`"7"`                                                                                                   | Students only               |
+| player    | string | Discord handle like `@Name#1234`                                                                              |                             |
+| status    | string | Approved, Pending, On Hiatus, Retired, Deceased                                                               |                             |
+| app       | string | URL to application/profile                                                                                    |                             |
+| notes     | string | Any extra info (optional)                                                                                     |                             |
 
-## Types Available
+6. **Add a comma** `,` **after the block** unless it’s the last entry.
+7. Click **Commit changes** to save.
 
-- **Rules**: School rules, regulations, laws
-- **Magic**: Spells, magical items, magical concepts  
-- **Location**: Places, buildings, areas
-- **General**: Everything else (events, people, atmosphere, etc.)
+---
 
-## Editing Existing Entries
+## 🚫 Adults Are Not Tracked
 
-1. Find the entry you want to modify in the `lore-data.json` file
-2. Click the pencil icon to edit
-3. Make your changes to the `"lore"` or `"notes"` fields
-4. Commit your changes
+* Adults are **uncapped** and **excluded** from this tracker’s counts and roster.
+* If you include adults in `tracker.json`, they will be **ignored** by the page because they are not students.
 
-## Troubleshooting
+---
 
-If the site breaks after your changes:
-1. Check for missing commas between entries
-2. Ensure all quotes are properly closed
-3. Verify brackets `{}` are properly matched
-4. Look for any special characters that might need escaping
+## ✏️ Editing a Student
 
-The site will automatically update within a few minutes of committing your changes to GitHub!
+* Find the student’s `{ ... }` block in `tracker.json`.
+* Change any values (name, status, year, etc.).
+* Click **Commit changes**.
+
+---
+
+## ❌ Removing a Student
+
+* Delete the student’s `{ ... }` block.
+* Keep commas correct:
+
+  * Every entry **except the last** needs a comma after the closing brace `}`.
+  * The last entry must **not** have a trailing comma.
+
+---
+
+## 📄 JSON Template (Copy & Paste)
+
+Use this when adding a new **student**:
+
+```json
+[
+  {
+    "specialty": "Parselmouth",
+    "character": "Full Name Here",
+    "house": "Gryffindor",
+    "year": "1",
+    "player": "@DiscordName#0000",
+    "status": "Approved",
+    "app": "https://link.to/application",
+    "notes": "Optional notes here"
+  }
+]
+```
+
+> When adding multiple students, copy just the inner `{ ... }` block and paste it on a new line above the closing `]`, adding commas between entries.
+
+---
+
+## ✅ Example with Two Students
+
+```json
+[
+  {
+    "specialty": "Parselmouth",
+    "character": "Ivy Blackthorne",
+    "house": "Slytherin",
+    "year": "5",
+    "player": "@PlayerOne",
+    "status": "Approved",
+    "app": "https://link.to/app1",
+    "notes": "Known for keeping snakes in the dorms"
+  },
+  {
+    "specialty": "Seer",
+    "character": "Alaric Moon",
+    "house": "Ravenclaw",
+    "year": "6",
+    "player": "@PlayerTwo",
+    "status": "Pending",
+    "app": "https://link.to/app2",
+    "notes": "Has visions during thunderstorms"
+  }
+]
+```
+
+---
+
+## ⚠️ Common Mistakes
+
+* **Missing commas** — every entry except the last needs a trailing comma.
+* **Wrong quotes** — JSON requires `"double quotes"` for all strings.
+* **Specialty typos** — must match exactly (e.g., `Parselmouth`, not `parselmouth`).
+* **Non-student entries** — adults won’t appear in the tracker; only include students you want shown.
+
+---
+
+## 🔄 Live Updates
+
+* After you **Commit changes** to `tracker.json`, the tracker webpage shows the new data after a refresh.
+* No changes to `index.html` are needed.
